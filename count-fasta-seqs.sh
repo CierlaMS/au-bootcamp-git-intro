@@ -98,7 +98,7 @@ echo "$@"
 
 for *.fasta
 
-do wc -l
+do sh run_tests.sh
 
 done
 
