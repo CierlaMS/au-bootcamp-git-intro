@@ -94,3 +94,13 @@ echo "$@"
 #
 # ADD YOUR CODE BELOW:
 
+#using wildcard for our example-seqs1.fasta and exampleseqs2.fasta files
+
+for *.fasta
+
+do wc -l
+
+done
+
+#wanted to test that we can all see the commits and changes each of us make
+
