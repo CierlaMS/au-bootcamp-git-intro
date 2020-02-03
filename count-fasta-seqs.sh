@@ -104,3 +104,4 @@ done
 
 #wanted to test that we can all see the commits and changes each of us make
 
+#git log command to view all git commits
