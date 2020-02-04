@@ -3,7 +3,7 @@
 # get location of everything
 currentdir="$(pwd)"
 testdir=""
-thisdir="$(dirname "$0")"
+thisdir="$(dirname "$@")"
 if [ "$thisdir" = "." ]
 then
     testdir="$(pwd)"
@@ -12,7 +12,7 @@ else
     testdir="$(pwd)"
 fi
 basedir="$(dirname "$testdir")"
-testfile="$(basename "$0")"
+testfile="$(basename "$@")"
 testname="${testfile%.sh}"
 testsubdir="${testdir}/${testname}"
 scriptname="count-fasta-seqs.sh"
