@@ -3,16 +3,16 @@
 # get location of everything
 currentdir="$(pwd)"
 testdir=""
-thisdir="$(dirname "$@")"
+thisdir="$(dirname "$0")"
 if [ "$thisdir" = "." ]
 then
-    testdir="$(pwd)"
+    testdir="$currentdir"
 else
     cd "$thisdir"
-    testdir="$(pwd)"
+    testdir="$currentdir"
 fi
 basedir="$(dirname "$testdir")"
-testfile="$(basename "$@")"
+testfile="$(basename "$0")"
 testname="${testfile%.sh}"
 testsubdir="${testdir}/${testname}"
 scriptname="count-fasta-seqs.sh"
