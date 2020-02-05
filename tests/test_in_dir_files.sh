@@ -6,10 +6,10 @@ testdir=""
 thisdir="$(dirname "$0")"
 if [ "$thisdir" = "." ]
 then
-    testdir="$(pwd)"
+    testdir="$currentdir"
 else
     cd "$thisdir"
-    testdir="$(pwd)"
+    testdir="$currentdir"
 fi
 basedir="$(dirname "$testdir")"
 testfile="$(basename "$0")"
