@@ -64,7 +64,7 @@
 # for this. Let's take a look at what it gives us:
 
 echo "$@"
-
+echo "testing ${count-fasta-seqs}"
 # How are you going to work with each file path?
 # HINT: for loop (remember "for do done"?)
 #
@@ -96,12 +96,99 @@ echo "$@"
 
 #using wildcard for our example-seqs1.fasta and exampleseqs2.fasta files
 
-for $FFILES in *.fasta
+for $FFILES in 
 
-do grep "_Sphenomorphus_arborens_Negros"
+do filename=$(basename "${*fasta}")
+input="tests/
+output="tests/
+reference="tests/
+# run the test for all files in the input dir of the subdirectory of interest...
+for path in $(ls tests/${subdir}/input/*)
+do
+    # set some variables to make the invocation easier to read
+    #
+    filename=$(basename "${path}")
+    input="tests/${subdir}/input/${filename}"
+    output="tests/${subdir}/output/${filename}"
+    reference="tests/${subdir}/expected-output/${filename}"
+    
+    # run the script
+    #
+    echo "testing: {count-fasta-seqs.sh} ${input}"
+    if python "${script}" "${input}" > "${output}"
+    then
+        # If it did not exit with an error, compare
+        # the output produced to the expected "reference" output
+        #
+        if diff "${output}" "${reference}"
+        then
+            # diff will succeed if the files are identical
+            #
+            echo "Passed"
+            passed=$(expr $passed + 1)
+        else
+            echo "Did not create the expected output!"
+        fi
+    else
+        echo "Program failed to exit cleanly"
+    fi
+    total=$(expr $total + 1)
+done
+
+echo "Passed $passed out of $total tests"
+
+if test $passed -eq $total
+then
+    exit 0
+else
+    exit 1
+fi
 
 done
 
 #wanted to test that we can all see the commits and changes each of us make
 
 #git log command to view all git commits
+
+
+# run the test for all files in the input dir of the subdirectory of interest...
+for path in $(ls tests/${subdir}/input/*)
+do
+    # set some variables to make the invocation easier to read
+    #
+    filename=$(basename "${path}")
+    input="tests/${subdir}/input/${filename}"
+    output="tests/${subdir}/output/${filename}"
+    reference="tests/${subdir}/expected-output/${filename}"
+    
+    # run the script
+    #
+    echo "testing: python ${script} ${input}"
+    if python "${script}" "${input}" > "${output}"
+    then
+        # If it did not exit with an error, compare
+        # the output produced to the expected "reference" output
+        #
+        if diff "${output}" "${reference}"
+        then
+            # diff will succeed if the files are identical
+            #
+            echo "Passed"
+            passed=$(expr $passed + 1)
+        else
+            echo "Did not create the expected output!"
+        fi
+    else
+        echo "Program failed to exit cleanly"
+    fi
+    total=$(expr $total + 1)
+done
+
+echo "Passed $passed out of $total tests"
+
+if test $passed -eq $total
+then
+    exit 0
+else
+    exit 1
+fi
