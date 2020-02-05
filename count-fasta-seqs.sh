@@ -96,9 +96,9 @@ echo "$@"
 
 #using wildcard for our example-seqs1.fasta and exampleseqs2.fasta files
 
-for *.fasta
+for $FFILES in *.fasta
 
-do sh run_tests.sh
+do grep "_Sphenomorphus_arborens_Negros"
 
 done
 
