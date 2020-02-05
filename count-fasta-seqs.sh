@@ -96,8 +96,9 @@ echo "testing ${count-fasta-seqs}"
 
 #using wildcard for our example-seqs1.fasta and exampleseqs2.fasta files
 
-for $FFILES in 
+
 currentdir="$(pwd)"
+for $FFILES in
 
 do filename=$(basename "@$")
 input="/home/aubcls61/git-intro/Git_Project_Collaborative/au-bootcamp-git-intro/$example-seqs1.fasta}"
