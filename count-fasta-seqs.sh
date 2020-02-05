@@ -108,10 +108,10 @@ reference="tests/
 for path in $(ls tests/${subdir}/input/*)
 do
     # set some variables to make it easier to read #
-    filename=$(basename "${path}")
-    input="tests/${subdir}/input/${filename}"
-    output="tests/${subdir}/output/${filename}"
-    reference="tests/${subdir}/expected-output/${filename}"
+    filename=$(basename "${~/au-bootcamp}")
+    input="tests/${subdir}/input/${example-seqs1.fasta}"
+    output="tests/${subdir}/output/${example-seqs1.fasta.counts}"
+    reference="tests/${subdir}/expected-output/${example-seqs2.fasta}"
 wc -l
     # run the script   #
     echo "testing: {count-fasta-seqs.sh} ${input}"
