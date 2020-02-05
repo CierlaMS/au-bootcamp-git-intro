@@ -99,7 +99,7 @@ echo "testing ${count-fasta-seqs}"
 for $FFILES in 
 currentdir="$(pwd)"
 
-do filename=$(basename "${*fasta}")
+do filename=$(basename "@$")
 input="/home/aubcls61/git-intro/Git_Project_Collaborative/au-bootcamp-git-intro/$example-seqs1.fasta}"
 
 output="tests/
