@@ -97,6 +97,7 @@ echo "testing ${count-fasta-seqs}"
 #using wildcard for our example-seqs1.fasta and exampleseqs2.fasta files
 
 for $FFILES in 
+currentdir="$(pwd)"
 
 do filename=$(basename "${*fasta}")
 input="/home/aubcls61/git-intro/Git_Project_Collaborative/au-bootcamp-git-intro/$example-seqs1.fasta}"
@@ -111,7 +112,7 @@ do
     input="tests/${subdir}/input/${filename}"
     output="tests/${subdir}/output/${filename}"
     reference="tests/${subdir}/expected-output/${filename}"
-
+wc -l
     # run the script   #
     echo "testing: {count-fasta-seqs.sh} ${input}"
 #    if python "${script}" "${input}" > "${output}"
